@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div id="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Inicio de Sesión</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-input label="Usuario" label-placement="floating" fill="outline" placeholder="Ingresar Usuario"></ion-input>
+            </ion-row>
+            <br>
+            <ion-row>
+              <ion-input label="Contraseña" label-placement="floating" fill="outline" placeholder="Ingresar Contraseña" type="password"></ion-input>
+            </ion-row>
+          </ion-grid>
+      </ion-card-content>
+    
+      <ion-button fill="clear" [routerLink]="['/users-list']">Ingresar</ion-button>
+      <ion-button fill="clear" [routerLink]="['/registro']">Crear Cuenta</ion-button>
+    </ion-card>
+  </div>
+</ion-content>

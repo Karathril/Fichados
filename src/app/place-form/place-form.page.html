@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>placeForm</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="formularioPlace" (ngSubmit)="onSubmit()">
+    <ion-input color="warning" label="Nombre" label-placement="floating" fill="solid" placeholder="Ingrese Nombre" formControlName="nombrePla"></ion-input>
+    <ion-input color="warning" label="Nombre" label-placement="floating" fill="solid" placeholder="Ingrese Nombre" formControlName="foto"></ion-input>
+    <ion-input color="warning" label="Nombre" label-placement="floating" fill="solid" placeholder="Ingrese Nombre" formControlName="hoteles"></ion-input>
+    <ion-input color="warning" label="Nombre" label-placement="floating" fill="solid" placeholder="Ingrese Nombre" formControlName="comentarios"></ion-input>
+    <ion-button fill="outline" expand="block" color="warning" type="submit" [disabled]="!formularioPlace.valid">Confirma</ion-button>
+  </form>
+</ion-content>
