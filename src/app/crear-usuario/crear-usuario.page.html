@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+  </ion-header>
+  <ion-card id="card-principal">
+    <form class="formulario-registro">
+      <ion-input id="nombre" label="Nombre:" placeholder="Primer nombre"></ion-input>
+      <ion-input id="apellido" label="Apellido:" placeholder="Primer apellido"></ion-input>
+      <ion-input id="email" type="email" label="Correo:" placeholder="Correo@gmail.com"></ion-input>
+      <ion-input id="password" type="Password" label="Contraseña:" placeholder="**********"></ion-input>
+      <ion-input id="verificar-password" type="Password" label="Verificar Contraseña:" placeholder="**********"></ion-input>
+    </form>
+    <div class="button-container">
+      <ion-button shape="round" size="medium" color="warning" >Volver</ion-button>
+      <ion-button shape="round" size="medium" color="danger" >Registrarse</ion-button>
+    </div>
+  </ion-card>
+</ion-content>

@@ -19,6 +19,15 @@ const routes: Routes = [
     path: 'public-game',
     loadChildren: () => import('./public-game/public-game.module').then( m => m.PublicGamePageModule)
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'crear-usuario',
+    loadChildren: () => import('./crear-usuario/crear-usuario.module').then( m => m.CrearUsuarioPageModule)
+  },
+
+
 ];
 
 @NgModule({
