@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../services/user-add.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,14 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private userService: UsersService, private router: Router) {}
 
+  onClick(){
+    this.userService.logout()
+    .then(() => {
+      this.router.navigate(['/login'])
+    })
+    .catch(error => console.log(error))
+  }
 }
+
