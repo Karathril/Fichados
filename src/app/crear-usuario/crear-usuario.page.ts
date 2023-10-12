@@ -15,8 +15,10 @@ export class CrearUsuarioPage implements OnInit {
   constructor( private userService: UsersService, private router: Router) {
 
     this.formReg = new FormGroup({
+      nombre: new FormControl('', [Validators.required, Validators.maxLength(12),Validators.minLength(3)]),
+      apellido: new FormControl('', [Validators.required, Validators.maxLength(12),Validators.minLength(3)]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      password: new FormControl('',Validators.required),
+      password: new FormControl('',Validators.required)
     })
 
   }
@@ -24,15 +26,22 @@ export class CrearUsuarioPage implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
-    this.userService.register(this.formReg.value)
-    .then(response => {
-      console.log(response)
-      this.router.navigate(['/login'])
-    })
-    .catch(error => {
-      console.log(error)
-      alert('Ingrese Datos Válidos');
-    });
+
+      const email =this.formReg.value.email;
+      const pass =this.formReg.value.password;
+      this.userService.register(email,pass)
+      .then((userCredential)=> {
+        const user = userCredential.user; // El objeto del usuario autenticado
+        console.log(user)
+        this.userService.addUser(this.formReg.value);
+        this.router.navigate(['/login'])
+      })
+      .catch((error) => {
+        console.log(error)
+        alert('Correo ya registrado');
+      });
   }
+
+
 
 }

@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'crear-juego',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
