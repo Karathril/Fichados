@@ -24,8 +24,8 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(){
-    this.userService.login(this.formLog.value)
+  async onSubmit(){
+    await this.userService.login(this.formLog.value)
     .then(response => {
       console.log(response)
       this.router.navigate(['/crear-juego'])

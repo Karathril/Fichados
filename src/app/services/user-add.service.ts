@@ -33,10 +33,12 @@ export class UsersService {
     return addDoc(userRef,user);
   }
 
-  getEmails(): Observable<User[]>{
-    const userRef = collection(this.firestore, 'repartidores');
-    const queryj = query(userRef, where('correo', '!=', null));
-    return collectionData(queryj, { idField: 'id' }) as Observable<User[]>;
+  getEmails(): Observable<any[]>{
+    const userRef = collection(this.firestore, 'Usuario');
+    const queryj = query(userRef, where('email', '!=', null));
+    const datos = collectionData(queryj, { idField: 'id' }) as Observable<any[]>;
+    //console.log(datos);
+    return datos;
   }
 
 
