@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { AlertController } from '@ionic/angular';
+import { PartidoService } from '../services/partido.service';
+import { Router } from '@angular/router';
 //Mis importaciones
 
 
@@ -17,11 +19,17 @@ export class CrearJuegoPage implements OnInit {
   ocultarS1ficha: boolean = true;
   ocultarS2ficha: boolean = true;
   fmGame: FormGroup;
-  switchPlayers: string = '';
-  switchCanchas: string = '';
+  switchPlayers: string = 'D';
+  switchCanchas: string = 'AC';
   date: string;
 
-  constructor(public fb: FormBuilder, public alertController: AlertController) {
+  constructor(
+                public fb: FormBuilder,
+                public alertController: AlertController,
+                private partidoService: PartidoService,
+                public router: Router,
+
+                ){
     this.fmGame = this.fb.group({
       'nameGame': new FormControl("", Validators.required),
       'ubicacion': new FormControl("", Validators.required),
@@ -59,6 +67,8 @@ export class CrearJuegoPage implements OnInit {
 
   toggleAC = true;
   toggleAF = false;
+  //Por defecto
+
   toggleCanchas(canchas: String){
     if (canchas === 'AC') {
       this.switchCanchas='AC'
@@ -70,7 +80,6 @@ export class CrearJuegoPage implements OnInit {
       this.imgCancha.nativeElement.src = 'https://i.ibb.co/MNVCb0h/blue-tennis-court-tactics-board-vector.jpg';
       this.toggleAC = false;
       this.toggleAF = false;
-
 
     }
   }
@@ -89,14 +98,32 @@ export class CrearJuegoPage implements OnInit {
       return;
     } else {
 
-      //Nombre del partido
-      let nameGame = form.nameGame;
-      let cantPlayers = this.switchPlayers;
-      let nameCancha = this.switchCanchas;
-      let ubicacion = form.ubicacion;
-      let date = form.date;
-      console.log(date);
+      //Objeto de partido con sus atributos
+      var partido = {
+        id: 200,
+        nameGame : form.nameGame,
+        cantPlayers : this.switchPlayers,
+        nameCancha : this.switchCanchas,
+        ubicacion : form.ubicacion,
+        date : form.date,
+        p1: '',
+        p2: '',
+        p3: '',
+        p4: ''
+    }
+      //Enviar Datos a BD
+      this.partidoService.addGame(partido);
+      //Enviar msj a usuario para confirmar la creacion
+      const alert = await this.alertController.create({
+        header: 'Datos con exito!',
+        message: 'Se publicó el partido.',
+        buttons: ['Aceptar']
+      });
+      await alert.present();
+      return;
 
+      //Finalmente redirigimos a home
+      this.router.navigate(['/home']);
     }
 
 
