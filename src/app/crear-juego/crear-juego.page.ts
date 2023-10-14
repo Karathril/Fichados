@@ -19,8 +19,8 @@ export class CrearJuegoPage implements OnInit {
   ocultarS1ficha: boolean = true;
   ocultarS2ficha: boolean = true;
   fmGame: FormGroup;
-  switchPlayers: string = 'D';
-  switchCanchas: string = 'AC';
+  switchPlayers: string = 'Double';
+  switchCanchas: string = 'Arcilla';
   date: string;
 
   constructor(
@@ -49,14 +49,13 @@ export class CrearJuegoPage implements OnInit {
 
   togglePlayers(players: String) {
     if (players === 'S') {
-      this.switchPlayers='s';
+      this.switchPlayers='Single';
       this.ocultarS1ficha = false;
       this.ocultarS2ficha = false;
       this.toggleD = false;
       this.toggleS = false;
     } else if (players === 'D') {
-      console.log('Activado d');
-      this.switchPlayers='D';
+      this.switchPlayers='Double';
       this.ocultarS1ficha = true;
       this.ocultarS2ficha = true;
       this.toggleS = false;
@@ -71,12 +70,12 @@ export class CrearJuegoPage implements OnInit {
 
   toggleCanchas(canchas: String){
     if (canchas === 'AC') {
-      this.switchCanchas='AC'
+      this.switchCanchas='Arcilla'
       this.imgCancha.nativeElement.src = 'https://i.ibb.co/99LdTZs/clay-tennis-court-tactics-board-vector.jpg';
       this.toggleAF = false;
       this.toggleAC = false;
     } else if (canchas === 'AF') {
-      this.switchCanchas = 'AF';
+      this.switchCanchas = 'Asfalto';
       this.imgCancha.nativeElement.src = 'https://i.ibb.co/MNVCb0h/blue-tennis-court-tactics-board-vector.jpg';
       this.toggleAC = false;
       this.toggleAF = false;
@@ -119,11 +118,12 @@ export class CrearJuegoPage implements OnInit {
         message: 'Se publicó el partido.',
         buttons: ['Aceptar']
       });
+      //Mostrando alert
       await alert.present();
-      return;
-
       //Finalmente redirigimos a home
-      this.router.navigate(['/home']);
+      this.router.navigate(['/public-game']);
+      //Retornamos y nos encontraremos en home
+      return;
     }
 
 

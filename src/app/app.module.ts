@@ -13,7 +13,13 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, provideFirebaseApp(() => initializeApp(environment.firebase)), provideAuth(() => getAuth()), provideDatabase(() => getDatabase()), provideFirestore(() => getFirestore())],
+  imports: [BrowserModule,
+            IonicModule.forRoot(),
+            AppRoutingModule,
+            provideFirebaseApp(() => initializeApp(environment.firebase)),
+            provideAuth(() => getAuth()),
+            provideDatabase(() => getDatabase()),
+            provideFirestore(() => getFirestore())],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
