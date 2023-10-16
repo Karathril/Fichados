@@ -2,6 +2,8 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { AlertController } from '@ionic/angular';
+import { PartidoService } from '../services/partido.service';
+import { Router } from '@angular/router';
 //Mis importaciones
 
 
@@ -17,11 +19,17 @@ export class CrearJuegoPage implements OnInit {
   ocultarS1ficha: boolean = true;
   ocultarS2ficha: boolean = true;
   fmGame: FormGroup;
-  switchPlayers: string = '';
-  switchCanchas: string = '';
+  switchPlayers: string = 'Double';
+  switchCanchas: string = 'Arcilla';
   date: string;
 
-  constructor(public fb: FormBuilder, public alertController: AlertController) {
+  constructor(
+                public fb: FormBuilder,
+                public alertController: AlertController,
+                private partidoService: PartidoService,
+                public router: Router,
+
+                ){
     this.fmGame = this.fb.group({
       'nameGame': new FormControl("", Validators.required),
       'ubicacion': new FormControl("", Validators.required),
@@ -41,14 +49,13 @@ export class CrearJuegoPage implements OnInit {
 
   togglePlayers(players: String) {
     if (players === 'S') {
-      this.switchPlayers='s';
+      this.switchPlayers='Single';
       this.ocultarS1ficha = false;
       this.ocultarS2ficha = false;
       this.toggleD = false;
       this.toggleS = false;
     } else if (players === 'D') {
-      console.log('Activado d');
-      this.switchPlayers='D';
+      this.switchPlayers='Double';
       this.ocultarS1ficha = true;
       this.ocultarS2ficha = true;
       this.toggleS = false;
@@ -59,18 +66,19 @@ export class CrearJuegoPage implements OnInit {
 
   toggleAC = true;
   toggleAF = false;
+  //Por defecto
+
   toggleCanchas(canchas: String){
     if (canchas === 'AC') {
-      this.switchCanchas='AC'
+      this.switchCanchas='Arcilla'
       this.imgCancha.nativeElement.src = 'https://i.ibb.co/99LdTZs/clay-tennis-court-tactics-board-vector.jpg';
       this.toggleAF = false;
       this.toggleAC = false;
     } else if (canchas === 'AF') {
-      this.switchCanchas = 'AF';
+      this.switchCanchas = 'Asfalto';
       this.imgCancha.nativeElement.src = 'https://i.ibb.co/MNVCb0h/blue-tennis-court-tactics-board-vector.jpg';
       this.toggleAC = false;
       this.toggleAF = false;
-
 
     }
   }
@@ -89,14 +97,33 @@ export class CrearJuegoPage implements OnInit {
       return;
     } else {
 
-      //Nombre del partido
-      let nameGame = form.nameGame;
-      let cantPlayers = this.switchPlayers;
-      let nameCancha = this.switchCanchas;
-      let ubicacion = form.ubicacion;
-      let date = form.date;
-      console.log(date);
-
+      //Objeto de partido con sus atributos
+      var partido = {
+        id: 200,
+        nameGame : form.nameGame,
+        cantPlayers : this.switchPlayers,
+        nameCancha : this.switchCanchas,
+        ubicacion : form.ubicacion,
+        date : form.date,
+        p1: '',
+        p2: '',
+        p3: '',
+        p4: ''
+    }
+      //Enviar Datos a BD
+      this.partidoService.addGame(partido);
+      //Enviar msj a usuario para confirmar la creacion
+      const alert = await this.alertController.create({
+        header: 'Datos con exito!',
+        message: 'Se publicó el partido.',
+        buttons: ['Aceptar']
+      });
+      //Mostrando alert
+      await alert.present();
+      //Finalmente redirigimos a home
+      this.router.navigate(['/public-game']);
+      //Retornamos y nos encontraremos en home
+      return;
     }
 
 
