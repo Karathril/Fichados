@@ -31,7 +31,7 @@ export class CrearUsuarioPage implements OnInit {
     const email =this.formReg.value.email;
     const pass =this.formReg.value.password;
 
-    await this.userService.getEmails().pipe(take(1)).subscribe(data => {
+    await this.userService.getEmails().pipe(take(1)).subscribe(async data => {
       if (data && data.length > 0) {
         const correoExiste = data.some(item => item.email === email);
 
@@ -41,8 +41,6 @@ export class CrearUsuarioPage implements OnInit {
           console.log(`El correo ${email} no existe en el objeto.`);
           this.userService.register(email,pass)
           .then((userCredential)=> {
-            const user = userCredential.user; // El objeto del usuario autenticado
-            console.log(user)
             this.userService.addUser(this.formReg.value);
             this.router.navigate(['/login'])
           })
