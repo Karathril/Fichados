@@ -10,6 +10,8 @@ import { Partido } from '../interfaces/Partido';
 })
 export class PublicGamePage implements OnInit {
 
+  //Variables
+  tipoPartido: any = "Double";
   constructor(
     private partidoService: PartidoService,
     private firestore: Firestore
@@ -26,7 +28,11 @@ export class PublicGamePage implements OnInit {
     const gameSnapshot = await getDocs(games);
     return gameSnapshot.docs.map(doc => {
       let data = doc.data() as Partido;
+      if (data.cantPlayers === "Single") {
+        this.tipoPartido = 'Single';
+      }
       return data;
+
     });
   }
 

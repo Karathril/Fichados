@@ -28,8 +28,8 @@
           <ion-button color="tertiary" shape="round" size="small" (click)="registrarUsuario(partido,'p2')">Player 2</ion-button>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="6">
+      <ion-row *ngIf="tipoPartido != 'Double'">
+        <ion-col>
           <ion-button color="danger" shape="round" size="small" (click)="registrarUsuario(partido,'p3')">Player 3</ion-button>
         </ion-col>
         <ion-col size="6">
@@ -37,5 +37,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+
   </ion-card><br>
 </ion-content>

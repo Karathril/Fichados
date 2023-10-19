@@ -100,9 +100,9 @@ export class CrearJuegoPage implements OnInit {
 
 
       //Objeto de partido con sus atributos
-      if (this.switchPlayers='Single') {
+      if (this.switchPlayers=='Single') {
           const partido = {
-            id: 200,
+            id: "",
             nameGame : form.nameGame,
             cantPlayers : this.switchPlayers,
             nameCancha : this.switchCanchas,
@@ -129,15 +129,15 @@ export class CrearJuegoPage implements OnInit {
         //Retornamos y nos encontraremos en home
         return;
 
-      } else {
+      } else if (this.switchPlayers=='Double') {
         const partido = {
-          id: 200,
+          id:'${id}',
           nameGame : form.nameGame,
-          cantPlayers : this.switchPlayers,
+          cantPlayers :this.switchPlayers,
           nameCancha : this.switchCanchas,
           ubicacion : form.ubicacion,
           date : form.date,
-          p1: '',
+          p1: '${id}',
           p2: '',
           p3: '',
           p4: ''
