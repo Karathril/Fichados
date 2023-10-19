@@ -38,6 +38,7 @@ export class CrearJuegoPage implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 
@@ -97,36 +98,68 @@ export class CrearJuegoPage implements OnInit {
       return;
     } else {
 
+
       //Objeto de partido con sus atributos
-      var partido = {
-        id: 200,
-        nameGame : form.nameGame,
-        cantPlayers : this.switchPlayers,
-        nameCancha : this.switchCanchas,
-        ubicacion : form.ubicacion,
-        date : form.date,
-        p1: '',
-        p2: '',
-        p3: '',
-        p4: ''
+      if (this.switchPlayers='Single') {
+          const partido = {
+            id: 200,
+            nameGame : form.nameGame,
+            cantPlayers : this.switchPlayers,
+            nameCancha : this.switchCanchas,
+            ubicacion : form.ubicacion,
+            date : form.date,
+            p1: '${id}',
+            p2: '',
+            p3: 'N/A',
+            p4: 'N/A'
+        }
+
+        //Enviar Datos a BD
+        this.partidoService.addGame(partido);
+        //Enviar msj a usuario para confirmar la creacion
+        const alert = await this.alertController.create({
+          header: 'Datos con exito!',
+          message: 'Se publicó el partido.',
+          buttons: ['Aceptar']
+        });
+        //Mostrando alert
+        await alert.present();
+        //Finalmente redirigimos a home
+        this.router.navigate(['/public-game']);
+        //Retornamos y nos encontraremos en home
+        return;
+
+      } else {
+        const partido = {
+          id: 200,
+          nameGame : form.nameGame,
+          cantPlayers : this.switchPlayers,
+          nameCancha : this.switchCanchas,
+          ubicacion : form.ubicacion,
+          date : form.date,
+          p1: '',
+          p2: '',
+          p3: '',
+          p4: ''
+        }
+
+        //Enviar Datos a BD
+          this.partidoService.addGame(partido);
+          //Enviar msj a usuario para confirmar la creacion
+          const alert = await this.alertController.create({
+            header: 'Datos con exito!',
+            message: 'Se publicó el partido.',
+            buttons: ['Aceptar']
+          });
+          //Mostrando alert
+          await alert.present();
+          //Finalmente redirigimos a home
+          this.router.navigate(['/public-game']);
+          //Retornamos y nos encontraremos en home
+          return;
+
+      }
     }
-      //Enviar Datos a BD
-      this.partidoService.addGame(partido);
-      //Enviar msj a usuario para confirmar la creacion
-      const alert = await this.alertController.create({
-        header: 'Datos con exito!',
-        message: 'Se publicó el partido.',
-        buttons: ['Aceptar']
-      });
-      //Mostrando alert
-      await alert.present();
-      //Finalmente redirigimos a home
-      this.router.navigate(['/public-game']);
-      //Retornamos y nos encontraremos en home
-      return;
-    }
-
-
-
   }
+
 }; //END CLASS
