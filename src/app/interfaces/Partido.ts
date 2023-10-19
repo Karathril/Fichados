@@ -1,5 +1,5 @@
 export interface Partido {
-  id: number;
+  id: string;
   nameGame: string;
   nameCancha: string;
   ubicacion: string;

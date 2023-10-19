@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'public-game',
-    loadChildren: () => import('./public-game/public-game.module').then( m => m.PublicGamePageModule)
+    loadChildren: () => import('./public-game/public-game.module').then( m => m.PublicGamePageModule),...canActivate(() => redirectUnauthorizedTo(['/crear-usuario']))
   },
   {
     path: 'login',
@@ -28,6 +28,11 @@ const routes: Routes = [
     path: 'crear-usuario',
     loadChildren: () => import('./crear-usuario/crear-usuario.module').then( m => m.CrearUsuarioPageModule)
   },
+  {
+    path: 'registered-game',
+    loadChildren: () => import('./registered-game/registered-game.module').then( m => m.RegisteredGamePageModule),...canActivate(() => redirectUnauthorizedTo(['/crear-usuario']))
+  },
+
 
 
 ];

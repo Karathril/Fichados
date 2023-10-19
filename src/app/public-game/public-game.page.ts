@@ -29,4 +29,10 @@ export class PublicGamePage implements OnInit {
       return data;
     });
   }
+
+  registrarUsuario(partido: any, playerNumber: any) {
+    const partidoID = partido.id;
+    // Luego, puedes utilizar el partidoID para registrar zal usuario en el partido
+    this.partidoService.addPlayer(partidoID, playerNumber);
+  }
 }

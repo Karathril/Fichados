@@ -99,7 +99,7 @@ export class CrearJuegoPage implements OnInit {
 
       //Objeto de partido con sus atributos
       var partido = {
-        id: 200,
+        id: '',
         nameGame : form.nameGame,
         cantPlayers : this.switchPlayers,
         nameCancha : this.switchCanchas,
