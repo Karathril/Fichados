@@ -17,8 +17,9 @@ export class PublicGamePage implements OnInit {
 
   ngOnInit() {
 
-
   }
+
+
   partidos$ = this.partidoService.getGames();
 
   async getGames(): Promise<any> {
@@ -30,9 +31,12 @@ export class PublicGamePage implements OnInit {
     });
   }
 
+
   registrarUsuario(partido: any, playerNumber: any) {
     const partidoID = partido.id;
     // Luego, puedes utilizar el partidoID para registrar zal usuario en el partido
     this.partidoService.addPlayer(partidoID, playerNumber);
   }
+
+
 }
