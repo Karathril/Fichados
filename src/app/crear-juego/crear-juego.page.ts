@@ -48,6 +48,7 @@ export class CrearJuegoPage implements OnInit {
   toggleS = false;
   toggleD = true;
 
+
   togglePlayers(players: String) {
     if (players === 'S') {
       this.switchPlayers='Single';
@@ -63,6 +64,7 @@ export class CrearJuegoPage implements OnInit {
       this.toggleD = false;
     }
   }
+
   //CAMBIAR CHANCHAS
 
   toggleAC = true;
