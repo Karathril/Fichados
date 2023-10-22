@@ -1,15 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button class="btn-back" defaultHref="/"></ion-back-button>
+    </ion-buttons>
     <ion-title class="i-title">Crear Partido</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <h1 class="i-title">Crear partido</h1>
-    </ion-toolbar>
-  </ion-header>
   <form [formGroup]="fmGame">
     <ion-grid fixed>
       <ion-row>

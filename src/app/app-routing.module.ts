@@ -31,7 +31,11 @@ const routes: Routes = [
   {
     path: 'registered-game',
     loadChildren: () => import('./registered-game/registered-game.module').then( m => m.RegisteredGamePageModule),...canActivate(() => redirectUnauthorizedTo(['/crear-usuario']))
+  },  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
   },
+
 
 
 

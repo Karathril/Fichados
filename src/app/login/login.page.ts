@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
     await this.userService.login(this.formLog.value)
     .then(response => {
       console.log(response)
-      this.router.navigate(['/crear-juego'])
+      this.router.navigate(['/home'])
     })
     .catch(error => {
       console.log(error)
