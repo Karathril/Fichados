@@ -4,6 +4,7 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { AlertController } from '@ionic/angular';
 import { PartidoService } from '../services/partido.service';
 import { Router } from '@angular/router';
+import { getAuth } from '@angular/fire/auth';
 //Mis importaciones
 
 
@@ -88,6 +89,9 @@ export class CrearJuegoPage implements OnInit {
 
   //Adquirir datos formularios
   async validarFm(){
+    const auth = getAuth();
+    // Obtén el UID del usuario autenticado (asegúrate de que el usuario esté autenticado)
+    const usuarioEmail = auth.currentUser?.email;
     var form = this.fmGame.value;
 
     if (this.fmGame.invalid) {
@@ -110,8 +114,8 @@ export class CrearJuegoPage implements OnInit {
             nameCancha : this.switchCanchas,
             ubicacion : form.ubicacion,
             date : form.date,
-            p1: '${id}',
-            p2: '',
+            p1: usuarioEmail,
+            p2: 'N/A',
             p3: 'N/A',
             p4: 'N/A'
         }
@@ -139,10 +143,10 @@ export class CrearJuegoPage implements OnInit {
           nameCancha : this.switchCanchas,
           ubicacion : form.ubicacion,
           date : form.date,
-          p1: '${id}',
-          p2: '',
-          p3: '',
-          p4: ''
+          p1: usuarioEmail,
+          p2: 'N/A',
+          p3: 'N/A',
+          p4: 'N/A'
         }
 
         //Enviar Datos a BD

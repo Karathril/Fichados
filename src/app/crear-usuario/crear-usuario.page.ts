@@ -20,7 +20,8 @@ export class CrearUsuarioPage implements OnInit {
       nombre: new FormControl('', [Validators.required, Validators.maxLength(12),Validators.minLength(3)]),
       apellido: new FormControl('', [Validators.required, Validators.maxLength(12),Validators.minLength(3)]),
       email: new FormControl('',[Validators.required, Validators.email]),
-      password: new FormControl('',Validators.required)
+      password: new FormControl('',Validators.required),
+      rol: new FormControl(Validators.required)
     })
 
   }

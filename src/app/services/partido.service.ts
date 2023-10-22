@@ -38,10 +38,11 @@ export class PartidoService {
 
     // Obtén el UID del usuario autenticado (asegúrate de que el usuario esté autenticado)
     const usuarioUID = auth.currentUser?.uid;
+    const usuarioEmail = auth.currentUser?.email;
 
     // Actualiza el campo de jugador correspondiente en el documento del partido
     updateDoc(partidoRef, {
-        [playerNumber]: usuarioUID
+        [playerNumber]: usuarioEmail
     })
     .then(() => {
         console.log('Usuario registrado en el partido.');

@@ -3,7 +3,7 @@ export interface Partido {
   nameGame: string;
   nameCancha: string;
   ubicacion: string;
-  p1: string;
+  p1: any;
   p2: string;
   p3: string;
   p4: string;

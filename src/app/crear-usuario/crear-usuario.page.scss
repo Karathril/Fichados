@@ -3,12 +3,14 @@ ion-content {
 }
 
 
+
 #card-principal{
   margin-top: 200px;
   padding-left: 10px;
   backdrop-filter: blur(50%);
   background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 4px 6px 0px rgb(0, 0, 0);
+
 }
 
 .formulario-registro{
@@ -20,5 +22,12 @@ ion-content {
 .button-container{
   padding-bottom: 20px;
   padding-left: 40px;
+}
+
+ion-input{
+  color: black;
+}
+ion-select{
+  color: black;
 }
 

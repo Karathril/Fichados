@@ -4,4 +4,5 @@ export default interface User {
     apellido: string;
     email: string;
     password: string;
+    rol: any;
 }

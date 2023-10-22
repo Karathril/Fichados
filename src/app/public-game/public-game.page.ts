@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PartidoService } from '../services/partido.service';
 import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 import { Partido } from '../interfaces/Partido';
+import { AlertController } from '@ionic/angular';
+import { getAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-public-game',
@@ -14,7 +16,8 @@ export class PublicGamePage implements OnInit {
   tipoPartido: any = "Double";
   constructor(
     private partidoService: PartidoService,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private alertController: AlertController
   ) { }
 
   ngOnInit() {
@@ -38,10 +41,41 @@ export class PublicGamePage implements OnInit {
   }
 
 
-  registrarUsuario(partido: any, playerNumber: any) {
-    const partidoID = partido.id;
-    // Luego, puedes utilizar el partidoID para registrar zal usuario en el partido
-    this.partidoService.addPlayer(partidoID, playerNumber);
+  async registrarUsuario(partido: any, playerNumber: any) {
+    const auth = getAuth();
+    const usuarioEmail = auth.currentUser?.email;
+    if(partido.p1 || partido.p2 || partido.p3 || partido.p4 === usuarioEmail){
+      const alert = await this.alertController.create({
+        header: 'Usuario ya registrado',
+        message: 'Tu correo ya esta registrado en este partido',
+        buttons: ['Aceptar']
+      });
+      await alert.present();
+      return;
+    }else{
+      const alert = await this.alertController.create({
+        header: 'Unirse a la partida',
+        message: '¿Estás seguro de que deseas unirte a esta partida?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+          },
+          {
+            text: 'Aceptar',
+            handler: () => {
+              // Aquí colocas la lógica para unir al usuario a la partida
+              const partidoID = partido.id;
+              this.partidoService.addPlayer(partidoID, playerNumber);
+
+            },
+          },
+        ],
+      });
+
+      await alert.present();
+    }
+
   }
 
 
