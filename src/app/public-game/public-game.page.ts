@@ -44,7 +44,7 @@ export class PublicGamePage implements OnInit {
   async registrarUsuario(partido: any, playerNumber: any) {
     const auth = getAuth();
     const usuarioEmail = auth.currentUser?.email;
-    if(partido.p1 || partido.p2 || partido.p3 || partido.p4 === usuarioEmail){
+    if(partido.p1 === usuarioEmail || partido.p2 === usuarioEmail || partido.p3 === usuarioEmail || partido.p4 === usuarioEmail){
       const alert = await this.alertController.create({
         header: 'Usuario ya registrado',
         message: 'Tu correo ya esta registrado en este partido',
