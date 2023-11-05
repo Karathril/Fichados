@@ -60,7 +60,7 @@
       <br>
       <br>
       <div class="btns">
-        <ion-button class="btn-cancelar" shape="round" fill="solid" size="medium">
+        <ion-button class="btn-cancelar" [routerLink]="['/home']" routerLinkActive="router-link-active"  shape="round" fill="solid" size="medium">
           Cancelar
         </ion-button>
         <ion-button (click)="validarFm()" class="btn-aceptar" shape="circle" fill="solid" size="medium">
