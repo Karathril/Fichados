@@ -11,3 +11,12 @@ class UsuarioListView(generics.ListAPIView):
 class PartidoListView(generics.ListAPIView):
     queryset = Partido.objects.all()
     serializer_class = PartidoSerializer
+
+
+class UsuarioDetailView(generics.RetrieveAPIView):
+    queryset = Usuario.objects.all()
+    serializer_class = UsuarioSerializer
+
+class PartidoDetailView(generics.RetrieveAPIView):
+    queryset = Partido.objects.all()
+    serializer_class = PartidoSerializer
