@@ -1,7 +1,0 @@
-{
-  "name": "JugadosApp",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
