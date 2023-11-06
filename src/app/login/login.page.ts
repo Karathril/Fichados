@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../services/user-add.service';
 import { Router } from '@angular/router';
-
+import { MiServicio } from '../services/bd.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -11,8 +11,11 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   formLog: FormGroup;
-
-  constructor(private userService: UsersService, private router: Router) {
+  datos:any;
+  constructor(
+              private bd : MiServicio,
+              private userService: UsersService,
+              private router: Router,) {
 
     this.formLog = new FormGroup({
       email: new FormControl('',[Validators.email]),
@@ -22,6 +25,16 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
+    this.bd.getRecursos().subscribe({
+      next: data => {
+        this.datos = data;
+        console.log(this.datos);
+
+      },
+      error: error => {
+        console.error('Error:', error);
+      }
+    });
   }
 
   async onSubmit(){

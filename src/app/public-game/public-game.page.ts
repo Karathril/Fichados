@@ -17,7 +17,7 @@ export class PublicGamePage implements OnInit {
   constructor(
     private partidoService: PartidoService,
     private firestore: Firestore,
-    private alertController: AlertController
+    private alertController: AlertController,
   ) { }
 
   ngOnInit() {
