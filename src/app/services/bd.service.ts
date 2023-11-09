@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MiServicio {
 
-  private urlApi = 'https://rickandmortyapi.com/api/';
+  private urlApi = 'http://127.0.0.1:8000/api/usuario/';
 
   constructor(private http: HttpClient) { }
   //Metodo GET
