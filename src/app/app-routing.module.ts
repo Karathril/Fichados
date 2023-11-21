@@ -29,11 +29,12 @@ const routes: Routes = [
     loadChildren: () => import('./crear-usuario/crear-usuario.module').then( m => m.CrearUsuarioPageModule)
   },
   {
-    path: 'registered-game',
-    loadChildren: () => import('./registered-game/registered-game.module').then( m => m.RegisteredGamePageModule),...canActivate(() => redirectUnauthorizedTo(['/crear-usuario']))
-  },  {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'regis-game',
+    loadChildren: () => import('./regis-game/regis-game.module').then( m => m.RegisGamePageModule)
   },
 
 

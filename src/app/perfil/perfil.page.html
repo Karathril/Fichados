@@ -8,11 +8,63 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card color="dark">
-    <ion-card-header>
-      <ion-card-title>Vuelva pronto..</ion-card-title>
-    </ion-card-header>
-
-    <ion-card-content>Pagina en Contruccion</ion-card-content>
-  </ion-card>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Titulo de la carta</ion-card-title>
+          </ion-card-header>
+          
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-content>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12">
+                  <h1>Datos Registrados</h1>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                  <strong>Aces: </strong>
+                </ion-col>
+                <ion-col size="6">
+                  <strong>Doubles faltas: </strong>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  <strong>Partidos Ganados: </strong>
+                  <br>
+                  <strong>Partidos Perdidos: </strong>
+                  <br>
+                  <strong>Partidos Empatados: </strong>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="6">
+                  <strong>Jugado en Arcilla: </strong>
+                </ion-col>
+                <ion-col size="6">
+                  <strong>Jugado en Asfalto: </strong>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button class="btn-datos" (click)="onClick()" expand="block" fill="clear" shape="round">
+          Registrar Datos partido jugado
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

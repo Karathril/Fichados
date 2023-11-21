@@ -1,0 +1,16 @@
+.container {
+    text-align: center;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.btn-datos{
+    width: 100%;
+    font-weight: bold;
+    --color: rgb(221, 105, 23);;
+    --background: rgb(0, 0, 0);
+}

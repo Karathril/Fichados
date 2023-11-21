@@ -10,18 +10,22 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideDatabase,getDatabase } from '@angular/fire/database';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Mis importaciones
 
 @NgModule({
   declarations: [AppComponent],
   imports: [HttpClientModule,
             BrowserModule,
+            ReactiveFormsModule,
+            FormsModule,
             IonicModule.forRoot(),
             AppRoutingModule,
             provideFirebaseApp(() => initializeApp(environment.firebase)),
             provideAuth(() => getAuth()),
             provideDatabase(() => getDatabase()),
             provideFirestore(() => getFirestore())],
+            
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
