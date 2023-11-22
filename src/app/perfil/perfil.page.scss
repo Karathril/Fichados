@@ -9,3 +9,28 @@
   --color: rgb(221, 105, 23);;
   --background: rgb(0, 0, 0);
 }
+
+#chart {
+  max-width: 280px;
+  
+  margin:auto; 
+}
+
+.details{
+  height: 165px;
+  width: 300px;
+  //background-color: black;
+}
+
+.estadistica {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  font-weight: bold;
+  color: black;
+}
+
+.grafico{
+  background-color: black;
+}

@@ -12,23 +12,28 @@
     <ion-row>
       <ion-col size="12">
         <ion-card>
-          <ion-card-header>
-            <ion-card-title>Titulo de la carta</ion-card-title>
-          </ion-card-header>
-          
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-card>
           <ion-card-content>
             <ion-grid fixed>
               <ion-row>
                 <ion-col size="12">
-                  <h1>Datos Registrados</h1>
+                  <h1 class="estadistica">Registros Personales</h1>
                 </ion-col>
               </ion-row>
+              <ion-row>
+                <ion-col size="12" class="grafico">
+                  <div id="chart">
+                    <div class="details">
+                      <apx-chart
+                        [series]="options.series"
+                        [chart]="options.chart"
+                        [xaxis]="options.xaxis"
+                        [title]="options.title"
+                      ></apx-chart>
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <br>
               <ion-row>
                 <ion-col size="6">
                   <strong>Aces: </strong>
@@ -67,4 +72,8 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-grid fixed>
+    
+  </ion-grid>
+  
 </ion-content>

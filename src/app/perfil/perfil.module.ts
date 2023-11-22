@@ -7,13 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { PerfilPageRoutingModule } from './perfil-routing.module';
 
 import { PerfilPage } from './perfil.page';
-
+import { NgApexchartsModule } from "ng-apexcharts";
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PerfilPageRoutingModule
+    PerfilPageRoutingModule,
+    NgApexchartsModule
   ],
   declarations: [PerfilPage]
 })
