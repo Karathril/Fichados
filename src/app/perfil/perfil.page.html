@@ -8,72 +8,77 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="12">
-        <ion-card>
-          <ion-card-content>
-            <ion-grid fixed>
-              <ion-row>
-                <ion-col size="12">
-                  <h1 class="estadistica">Registros Personales</h1>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col size="12" class="grafico">
-                  <div id="chart">
-                    <div class="details">
-                      <apx-chart
-                        [series]="options.series"
-                        [chart]="options.chart"
-                        [xaxis]="options.xaxis"
-                        [title]="options.title"
-                      ></apx-chart>
-                    </div>
-                  </div>
-                </ion-col>
-              </ion-row>
-              <br>
-              <ion-row>
-                <ion-col size="6">
-                  <strong>Aces: </strong>
-                </ion-col>
-                <ion-col size="6">
-                  <strong>Doubles faltas: </strong>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col size="12">
-                  <strong>Partidos Ganados: </strong>
-                  <br>
-                  <strong>Partidos Perdidos: </strong>
-                  <br>
-                  <strong>Partidos Empatados: </strong>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col size="6">
-                  <strong>Jugado en Arcilla: </strong>
-                </ion-col>
-                <ion-col size="6">
-                  <strong>Jugado en Asfalto: </strong>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="12">
-        <ion-button class="btn-datos" (click)="onClick()" expand="block" fill="clear" shape="round">
-          Registrar Datos partido jugado
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <ion-grid fixed>
-    
-  </ion-grid>
+  <ion-avatar class="avatar">
+    <img alt="Silhouette of a person's head" src="https://datepsychology.com/wp-content/uploads/2022/09/gigachad.jpg" />
+  </ion-avatar>
+  <ion-card color="dark" class="card">
+    <ion-card-header>
+      <ion-card-title class="cartaTitulo">Alonso gomez</ion-card-title>
+      <ion-card-subtitle class="cartaSubtitulo" style="color: gray;">Jugador</ion-card-subtitle>
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col class="center-text"><b>Email</b></ion-col>
+          <ion-col class="center-text"><b>Edad</b></ion-col>
+          <ion-col class="center-text"><b>Telefono</b></ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="center-text" style="color: gray;">alo.@mail.com</ion-col>
+          <ion-col class="center-text" style="color: gray;">27</ion-col>
+          <ion-col class="center-text" style="color: gray;">1111111</ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="6" class="center-text">
+            <strong>Aces: </strong>
+          </ion-col>
+          <ion-col size="6" class="center-text">
+            <strong>Doubles faltas: </strong>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="center-text">
+            <strong>Partidos Ganados: </strong>
+            <br>
+            <strong>Partidos Perdidos: </strong>
+            <br>
+            <strong>Partidos Empatados: </strong>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" class="center-text">
+            <strong>Jugado en Arcilla: </strong>
+          </ion-col>
+          <ion-col size="6" class="center-text">
+            <strong>Jugado en Asfalto: </strong>
+          </ion-col>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-col size="12" class="center-text">
+            <div id="chart">
+              <div class="details">
+                <apx-chart
+                  [series]="options.series"
+                  [chart]="options.chart"
+                  [xaxis]="options.xaxis"
+                  [title]="options.title"
+                ></apx-chart>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button class="btn-datos" (click)="onClick()" expand="block" fill="clear" shape="round">
+              Registrar Datos partido jugado
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
   
 </ion-content>

@@ -41,5 +41,9 @@ export class UsersService {
     return datos;
   }
 
-
+  getUsuarios(correo: string): Observable<any> {
+    const usersCollection = collection(this.firestore, 'Usuario');
+    const q = query(usersCollection, where('email', '==', correo));
+    return collectionData(q);
+  }
 }

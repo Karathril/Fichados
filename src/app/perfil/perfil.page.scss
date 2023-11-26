@@ -10,6 +10,7 @@
   --background: rgb(0, 0, 0);
 }
 
+/*
 #chart {
   max-width: 280px;
   
@@ -33,4 +34,35 @@
 
 .grafico{
   background-color: black;
+}
+*/
+/*btn-back*/
+ion-content {
+  --background: url('https://magazine.fortevillageresort.com/wp-content/uploads/2022/01/tennis.jpg') no-repeat center center / cover;
+}
+
+.avatar {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+}
+
+.card {
+  top: 35%;
+}
+
+.cartaTitulo{
+  margin-top: 53px;
+  text-align: center;
+}
+.cartaSubtitulo{
+  text-align: center;
+}
+
+.center-text {
+  text-align: center;
 }

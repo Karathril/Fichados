@@ -35,6 +35,9 @@ fmRegistroGame:FormGroup;
       });
       await alert.present();
       return;
-    } 
+    }
+    if (form) {
+      
+    }
   }
 }
